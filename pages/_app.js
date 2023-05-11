@@ -1,6 +1,14 @@
-import '@/styles/globals.css'
+import Layout from '@/src/components/layout';
 
 
-export default async function App({ Component, pageProps }) {
-  return <Component {...pageProps} />
+const App = (props) => {
+  const { Component, pageProps } = props;
+
+  return(
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
+  )
 }
+
+export default App
