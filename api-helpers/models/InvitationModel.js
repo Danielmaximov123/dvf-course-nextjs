@@ -5,6 +5,8 @@ const InvitationSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId, 
         default: mongoose.Types.ObjectId 
     }
+},{
+    timestamps : true
 });
 
 export default mongoose.models.Invitation || mongoose.model("Invitation", InvitationSchema);

@@ -5,6 +5,7 @@ import { useEffect , useState } from "react";
 import LogoutIcon from '@mui/icons-material/Logout';
 import TokenIcon from '@mui/icons-material/Token';
 import GroupIcon from '@mui/icons-material/Group';
+import PlayLessonIcon from '@mui/icons-material/PlayLesson';
 import { useRouter } from "next/router";
 import jwt from 'jsonwebtoken'
 
@@ -13,7 +14,7 @@ const Header = ({token}) => {
   const [admin, setAdmin] = useState(false)
 
   const handleLogOut = () => {
-    sessionStorage.removeItem('token')
+    localStorage.removeItem('token')
     router.push('/sign-in')
   }
 
@@ -33,9 +34,14 @@ const Header = ({token}) => {
     <Box sx={{ flexGrow : 1 }}>
     <AppBar sx={{ backgroundColor: "#1a2138", height: "4rem" }}>
     <Toolbar>
-       <Typography variant="h6" component={Link} href='/' sx={{ flexGrow: 1 }}> 
+       <Typography variant="h6" sx={{ flexGrow: 1 }}> 
+          <Link href='/'>
           <Image src="/logo192.png" alt="" width={100} height={100} style={{  top: '0.5rem', position: 'relative' }}/>
+          </Link>
         </Typography>
+        <Button component={Link} href='/' color="inherit" endIcon={<PlayLessonIcon sx={{ transform: 'rotate(180deg)' }} />}>
+          שיעורים
+        </Button>
         {
           admin &&
           <>  

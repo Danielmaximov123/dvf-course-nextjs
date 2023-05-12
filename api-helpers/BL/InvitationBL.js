@@ -3,11 +3,7 @@ import InvitationSchema from '../models/InvitationModel';
 
 export const getAllInvitation = async () => {
         let data = await InvitationSchema.find({})
-        if(data.length > 0) {
-            return data;
-        } else {
-            return "אין הזמנות !"
-        }
+            return data
 }
 
 export const getInvitation = async (id) => {

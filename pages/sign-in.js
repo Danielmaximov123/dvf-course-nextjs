@@ -14,13 +14,13 @@ const Login = () => {
     e.preventDefault()
     let resp = await axios.post('api/auth/sign-in' , user)
     if(resp.data.success) {
-      sessionStorage.setItem('token', resp.data.token);
+      localStorage.setItem('token', resp.data.token);
       router.push('/')
     }
   }
 
   useEffect(() => {
-    const token = sessionStorage.getItem('token');
+    const token = localStorage.getItem('token');
     if (token) {
       router.push('/');
     }
