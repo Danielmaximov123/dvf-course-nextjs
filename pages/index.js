@@ -10,7 +10,7 @@ const Home = () => {
     if (!token) {
       router.push('/sign-in');
     }
-  }, [router]);
+  });
 
   return (
     <>
