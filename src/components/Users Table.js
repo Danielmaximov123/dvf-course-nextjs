@@ -28,7 +28,7 @@ const MyUsersTable = (props) => {
           <TableCell sx={{ textAlign : 'center' , color : '#FFFF' }} >שם פרטי</TableCell>
           <TableCell sx={{ textAlign : 'center' , color : '#FFFF' }} >שם משפחה</TableCell>
           <TableCell sx={{ textAlign : 'center' , color : '#FFFF' }} >דואר אלקטרוני</TableCell>
-          <TableCell sx={{ textAlign : 'center' , color : '#FFFF' }} >מס' טלפון</TableCell>
+          <TableCell sx={{ textAlign : 'center' , color : '#FFFF' }} >מס&apos; טלפון</TableCell>
           <TableCell sx={{ textAlign : 'center' , color : '#FFFF' }} >מחיקה</TableCell>
         </TableRow>
       </TableHead>
