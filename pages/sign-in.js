@@ -24,7 +24,7 @@ const Login = () => {
     if (token) {
       router.push('/');
     }
-  }, []);
+  }, [router]);
 
   return (
     <Box sx={{ textAlign: 'center', padding: '3rem' }}>

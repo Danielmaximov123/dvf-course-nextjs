@@ -12,6 +12,13 @@ const Register = () => {
   const [user, setUser] = useState({ email : "" , phoneNumber : "" , fName : "" , lName : '' , confirmPassword : "" , password : "" })
   const router = useRouter();
 
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      router.push('/');
+    }
+  }, [router]);
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     let resp = await axios.post('api/users' , user)

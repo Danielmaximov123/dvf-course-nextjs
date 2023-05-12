@@ -20,7 +20,7 @@ const Users = () => {
     if (!token) {
       router.push("/sign-in");
     }
-  }, []);
+  }, [router]);
 
   useEffect(() => {
     dispatch(getUsers());

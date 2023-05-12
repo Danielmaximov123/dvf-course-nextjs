@@ -22,7 +22,7 @@ const Tokens = () => {
     if (!token) {
       router.push('/sign-in');
     }
-  }, []);
+  }, [router]);
   
   useEffect(() => {
     dispatch(getInvitations())
