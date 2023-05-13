@@ -1,4 +1,5 @@
 import UserSchema from '../models/userModel';
+import { removeInvitation } from './InvitationBL';
 
 export const getAllUsers = async () => {
     const users = await UserSchema.find();
@@ -20,11 +21,8 @@ export const deleteUser = async (id) => {
     return user;
 }
 
-export const hashPassword = async () => {
 
-}
-
-export const AddNewUser = async (user) => {
+export const AddNewUser = async (user , invitation) => {
     const userEmail = await UserSchema.findOne({email : user.email})
     const userPhone = await UserSchema.findOne({phoneNumber : user.phoneNumber})
 
@@ -35,6 +33,7 @@ export const AddNewUser = async (user) => {
     } else {
         const newUser = new UserSchema(user);
         const savedUser = await newUser.save();
+        await removeInvitation(invitation)
     return { success : true , savedUser };
     }
 }

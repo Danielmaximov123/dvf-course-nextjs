@@ -6,8 +6,13 @@ const handler = async (req, res) => {
   await dbConnect();
   switch (method) {
     case "POST":
-      let data = await AddNewUser(body);
-      res.send(data);
+        const {user , invitation} = body
+      let resp = await AddNewUser(user , invitation);
+      if(resp.success) {
+        res.status(200).send(resp);
+      } else {
+        res.status(400).send(resp);
+      }
       break;
     default:
       res.status(400).json({ error: "Invalid request method" });

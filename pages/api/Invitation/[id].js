@@ -8,12 +8,20 @@ const handler = async (req, res) => {
     case "GET":
       // get by id
       let data = await getInvitation(query.id);
-      res.send(data);
+      if(data.success) {
+        res.status(200).send(data);
+      } else {
+        res.status(400).send(data);
+      }
       break;
       case "DELETE":
         // delete by id
       let deleteData = await removeInvitation(query.id);
-      res.send(deleteData);
+      if(deleteData.success) {
+        res.status(200).send(deleteData);
+      } else {
+        res.status(400).send(deleteData);
+      }
       break;
     default:
       res.status(400).json({ error: "Invalid request method" });
