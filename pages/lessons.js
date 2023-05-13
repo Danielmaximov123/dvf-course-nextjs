@@ -17,11 +17,11 @@ const Lessons = ({ lessons }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="lesson-page">
-        <div className="lesson-menu">
+      <Box>
+        <Box>
           <LessonMenu lessons={lessons} />
-        </div>
-        <div className="lesson-content">
+        </Box>
+        <Box>
           {router.query.lessonId ? (
             <LessonPage lessonId={router.query.lessonId} />
           ) : (
@@ -43,8 +43,8 @@ const Lessons = ({ lessons }) => {
               </p>
             </Box>
           )}
-        </div>
-      </div>
+        </Box>
+      </Box>
     </>
   );
 };
