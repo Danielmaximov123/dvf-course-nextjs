@@ -1,4 +1,4 @@
-import { CircularProgress } from '@mui/material';
+import { Box, CircularProgress } from '@mui/material';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
@@ -23,7 +23,9 @@ const Home = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <CircularProgress sx={{ color : '#ffa22d' , width: '10rem', height: '10rem' }} />
+      <Box sx={{ textAlign: 'center' }}>
+      <CircularProgress style={{ color : '#ffa22d' , width: '10rem', height: '10rem' }} />
+      </Box>
     </>
   );
 };
