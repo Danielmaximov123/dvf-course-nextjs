@@ -1,20 +1,22 @@
 import axios from 'axios';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
 import { Fragment } from 'react';
 import LessonMenu from './LessonMenu';
 import { Box } from '@mui/material';
-import ReactVideoPlayer from '@/src/components/ReactVideoPlayer';
+import AccordionComp from '@/src/components/AccordionComp';
+import AttachFileIcon from '@mui/icons-material/AttachFile';
+import { CssButton } from '@/src/components/Custom Button';
 
 const LessonPage = ({ lesson, lessons }) => {
 
-  let videoOptions = {
-    controls : true,
-    sources : [{
-      src : lesson.url,
-      type : 'video/mp4'
-    }]
-  }
+  const downloadFile = () => {
+    if(lesson.file) {
+      const link = document.createElement('a');
+      link.href = lesson.file;
+      link.download = true;
+      link.click();
+    }
+  };
 
   return (
     <>
@@ -24,16 +26,12 @@ const LessonPage = ({ lesson, lessons }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Box >
+      <Box>
         <Box>
           <LessonMenu lessons={lessons} />
         </Box>
-        <Box sx={{ margin : 'auto' }}>
+        <Box sx={{ margin : 'auto' , width : '800px' }}>
           <h2 style={{ textAlign : 'center' , color : '#ffa22d' }}>{lesson.title}</h2>
-          <Box sx={{ justifyContent: 'center', display: 'flex' }}>
-          { console.log(lesson.url) }
-          <ReactVideoPlayer options={videoOptions}/>
-          </Box>
           <Box sx={{ justifyContent: 'center', display: 'flex', textAlign: 'center' }}>
           {
             lesson.description &&
@@ -45,6 +43,20 @@ const LessonPage = ({ lesson, lessons }) => {
             ))}</p>
           }
           </Box>
+          {
+            lesson.bullets.length > 0 &&
+            <AccordionComp lesson={lesson}/>
+          }
+          {
+            lesson.file &&
+            <Box sx={{textAlign: 'end'}}>
+          <CssButton onClick={downloadFile} startIcon={<AttachFileIcon />}>הורדת אפקטים</CssButton>
+          </Box>
+          }
+          <Box sx={{ justifyContent: 'center', display: 'flex' }}>
+          <video src={lesson.url} width={800} controls controlsList="nodownload"/>
+          </Box>
+          
         </Box>
       </Box>
     </>

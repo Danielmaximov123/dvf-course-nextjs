@@ -14,7 +14,6 @@
     "@mui/icons-material": "^5.11.16",
     "@mui/lab": "^5.0.0-alpha.129",
     "@mui/material": "^5.12.3",
-    "@videojs/themes": "^1.0.1",
     "axios": "^1.4.0",
     "bcrypt": "^5.1.0",
     "bcryptjs": "^2.4.3",
@@ -36,8 +35,5 @@
     "redux-thunk": "^2.4.2",
     "stylis": "^4.2.0",
     "stylis-plugin-rtl": "^2.1.1"
-  },
-  "devDependencies": {
-    "video.js": "^8.3.0"
   }
 }

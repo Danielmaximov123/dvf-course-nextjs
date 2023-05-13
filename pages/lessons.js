@@ -1,10 +1,10 @@
-import CoursePageComp from '@/src/components/CoursePageComp';
-import axios from 'axios';
-import Head from 'next/head';
-import { useRouter } from 'next/router';
-import React from 'react';
-import LessonMenu from './lessons/LessonMenu';
-import LessonPage from './lessons/[id]';
+import axios from "axios";
+import Head from "next/head";
+import { useRouter } from "next/router";
+import React from "react";
+import LessonMenu from "./lessons/LessonMenu";
+import LessonPage from "./lessons/[id]";
+import { Box } from "@mui/material";
 
 const Lessons = ({ lessons }) => {
   const router = useRouter();
@@ -25,7 +25,23 @@ const Lessons = ({ lessons }) => {
           {router.query.lessonId ? (
             <LessonPage lessonId={router.query.lessonId} />
           ) : (
-            <h1>Select a lesson from the menu</h1>
+            <Box sx={{ width: "800px", margin: "auto" }}>
+              <p
+                style={{
+                  color: "#fff",
+                  textAlign: "center",
+                  fontSize: "1.5rem",
+                }}
+              >
+                ברוכים הבאים לקורס,
+                <br />
+                אני מאוד שמח שבחרת להכנס למסע הזה ובחרת בי,
+                <br />
+                אני בטוח שבשיעור האחרון לאחר שתתרגל/י את מה שלמדת כאן יהיה לך
+                ערך מוסף בתעשיה.
+                <br />
+              </p>
+            </Box>
           )}
         </div>
       </div>
@@ -34,7 +50,7 @@ const Lessons = ({ lessons }) => {
 };
 
 export async function getServerSideProps({ req }) {
-  const host = `${req.headers['x-forwarded-proto']}://${req.headers['host']}`;
+  const host = `${req.headers["x-forwarded-proto"]}://${req.headers["host"]}`;
   const response = await axios.get(`${host}/api/lessons`);
   const lessons = response.data;
   return {

@@ -10,7 +10,8 @@ const handler = async (req, res) => {
       // get All lessons
       try {
         const lessons = await lessonSchema.find();
-        res.status(200).json(lessons);
+        let data = lessons.sort((a,b) => a.lesson - b.lesson)
+        res.status(200).json(data);
       } catch (error) {
         res.status(500).json({ error: 'Internal server error' });
       }

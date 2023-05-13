@@ -18,7 +18,6 @@ const LessonMenu = ({ lessons }) => {
   return (
     <Box>
       <h1 style={{ textAlign: 'center', color: '#FFFF' }}>שיעורים</h1>
-      <ul>
       <Stack
         direction="row"
         justifyContent='center'
@@ -38,7 +37,6 @@ const LessonMenu = ({ lessons }) => {
       }
       )}
       </Stack>
-    </ul>
     </Box>
   );
 };
