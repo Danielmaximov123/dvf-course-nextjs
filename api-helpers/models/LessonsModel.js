@@ -19,6 +19,9 @@ const lessonSchema = new mongoose.Schema({
   file: {
     type: String,
   },
+  fileMac : {
+    type : String
+  }
 });
 
 export default mongoose.models.Lesson || mongoose.model("Lesson", lessonSchema);

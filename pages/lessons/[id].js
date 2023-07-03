@@ -9,10 +9,10 @@ import { CssButton } from '@/src/components/Custom Button';
 
 const LessonPage = ({ lesson, lessons }) => {
 
-  const downloadFile = () => {
-    if(lesson.file) {
+  const downloadFile = (file) => {
+    if(file) {
       const link = document.createElement('a');
-      link.href = lesson.file;
+      link.href = file;
       link.download = true;
       link.click();
     }
@@ -47,12 +47,20 @@ const LessonPage = ({ lesson, lessons }) => {
             lesson.bullets.length > 0 &&
             <AccordionComp lesson={lesson}/>
           }
-          {
-            lesson.file &&
-            <Box sx={{textAlign: 'end'}}>
-          <CssButton onClick={downloadFile} startIcon={<AttachFileIcon />}>הורדת אפקטים</CssButton>
+          <Box sx={{ display: 'flex', justifyContent: 'end' }}>
+            {
+                lesson.file &&
+                <Box sx={{textAlign: 'end' , margin : '0rem 0.3rem'}}>
+                  <CssButton onClick={() => downloadFile(lesson.file)} startIcon={<AttachFileIcon />}>הורדת אפקטים</CssButton>
+                </Box>
+            }
+            {
+                lesson.fileMac &&
+                <Box sx={{textAlign: 'end'}}>
+                  <CssButton onClick={() => downloadFile(lesson.fileMac)} startIcon={<AttachFileIcon />}>הורדת אפקטים  MAC</CssButton>
+                </Box>
+            }
           </Box>
-          }
           <Box sx={{ justifyContent: 'center', display: 'flex' }}>
           <video src={lesson.url} width={800} controls controlsList="nodownload"/>
           </Box>
